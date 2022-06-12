@@ -40,15 +40,12 @@ const webExtensionConfig = {
 		}
 	},
 	module: {
-		rules: [{
-			test: /\.ts$/,
-			include: [
-				path.resolve(__dirname, 'src/**/*'),
-			],
-			exclude: /node_modules/,
-			use: [{
-				loader: 'ts-loader',
-			}]
+		rules: [
+		{
+			test: /\.tsx?$/,
+			use: 'ts-loader',
+			include: path.resolve(__dirname, 'src/**/*'),
+			exclude: path.resolve(__dirname, '/node_modules'),
 		}]
 	},
 	plugins: [
