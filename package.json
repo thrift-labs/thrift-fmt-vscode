@@ -32,21 +32,22 @@
 		"run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.67.0",
 		"@types/mocha": "^9.1.1",
-		"eslint": "^8.16.0",
+		"@types/vscode": "^1.67.0",
+		"@types/webpack-env": "^1.17.0",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
-		"mocha": "^10.0.0",
-		"typescript": "^4.7.2",
 		"@vscode/test-web": "^0.0.24",
-		"ts-loader": "^9.3.0",
-		"webpack": "^5.72.1",
-		"webpack-cli": "^4.9.2",
-		"@types/webpack-env": "^1.17.0",
 		"assert": "^2.0.0",
-		"process": "^0.11.10"
+		"eslint": "^8.16.0",
+		"mocha": "^10.0.0",
+		"process": "^0.11.10",
+		"ts-loader": "^9.3.0",
+		"typescript": "^4.7.2",
+		"webpack": "^5.72.1",
+		"webpack-cli": "^4.9.2"
 	},
 	"dependencies": {
+		"thrift-fmt-ts": "^1.0.3-a0"
 	}
 }
