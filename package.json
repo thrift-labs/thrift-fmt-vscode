@@ -1,6 +1,6 @@
 {
 	"name": "thirft-formatter",
-	"displayName": "thirft formatter",
+	"displayName": "Thirft Formatter",
 	"description": "Thrift file formatter, keeping and align comment, patch the miss",
 	"version": "1.0.1",
 	"engines": {
@@ -8,6 +8,10 @@
 	},
 	"categories": [
 		"Formatters"
+	],
+	"keywords": [
+		"thrift",
+		"formatter"
 	],
 	"activationEvents": [
 		"onCommand:thirft-formatter.formatThriftFile"
@@ -21,6 +25,8 @@
 			}
 		]
 	},
+	"repository": "https://github.com/thrift-labs/thrift-fmt-vscode",
+	"publisher": "alingse",
 	"scripts": {
 		"test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/suite/index.js",
 		"pretest": "npm run compile-web",
