@@ -20,15 +20,6 @@ const webExtensionConfig = {
 		'extension': './src/web/extension.ts',
 		'test/suite/index': './src/web/test/suite/index.ts'
 	},
-	module: {
-		rules: [
-		{
-			test: /\.ts$/,
-			use: 'ts-loader',
-			include: path.resolve(__dirname, 'src/**/*'),
-			exclude: path.resolve(__dirname, '/node_modules'),
-		}]
-	},
 	output: {
 		filename: '[name].js',
 		path: path.join(__dirname, './dist/web'),
@@ -47,6 +38,15 @@ const webExtensionConfig = {
 			// for the list of Node.js core module polyfills.
 			'assert': require.resolve('assert')
 		}
+	},
+	module: {
+		rules: [{
+			test: /\.ts$/,
+			exclude: /node_modules/,
+			use: [{
+				loader: 'ts-loader'
+			}]
+		}]
 	},
 	plugins: [
 		new webpack.ProvidePlugin({
