@@ -2,8 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-import { ThriftData } from 'thrift-parser-ts';
-import { ThriftFormatter } from 'thrift-fmt-ts';
+//import { ThriftData } from 'thrift-parser-ts';
+//import { ThriftFormatter } from 'thrift-fmt-ts';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -22,6 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 		const { document } = vscode.window.activeTextEditor;
 		const content = document.getText();
+		/*
 		let data: ThriftData;
 		try {
 			data = ThriftData.from_string(content);
@@ -33,9 +34,10 @@ export function activate(context: vscode.ExtensionContext) {
 		const fmtContent = fmt.format();
 
 		console.log(fmtContent);
+		*/
 		vscode.window.activeTextEditor.edit(editBuilder => {
 			editBuilder.replace(
-				new vscode.Range(0, 0, document.lineCount, 0), fmtContent);
+				new vscode.Range(0, 0, document.lineCount, 0), content);
 		})
 		// Display a message box to the user
 		vscode.window.showInformationMessage('1 Your Thrift file has been formatted');
