@@ -19,8 +19,6 @@ use https://github.com/thrift-labs/thrift-fmt-ts
 1. option indent / patch / comment
 Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-For example:
-
 This extension contributes the following settings:
 
 * `myExtension.enable`: enable/disable this extension
@@ -29,6 +27,10 @@ This extension contributes the following settings:
 ## Known Issues
 
 ## Release Notes
+
+### 1.0.2-a0
+
+fix the miss `exception` bug
 
 ### 1.0.1
 
