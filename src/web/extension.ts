@@ -22,24 +22,14 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 		const { document } = vscode.window.activeTextEditor;
 		const content = document.getText();
-
-		let data: ThriftData;
-		try {
-			data = ThriftData.from_string(content);
-		} catch (error) {
-			vscode.window.showInformationMessage('Can not parse Your thrift file');
-			return;
+		const [fmtContent, needUpdate] = formatThrift(content);
+		if (needUpdate) {
+			vscode.window.activeTextEditor.edit(editBuilder => {
+				editBuilder.replace(
+					new vscode.Range(0, 0, document.lineCount, 0), fmtContent);
+			})
+			vscode.window.showInformationMessage('Your Thrift file has been formatted');
 		}
-		const fmt = new ThriftFormatter(data);
-		const fmtContent = fmt.format();
-		// console.log(fmtContent);
-
-		vscode.window.activeTextEditor.edit(editBuilder => {
-			editBuilder.replace(
-				new vscode.Range(0, 0, document.lineCount, 0), fmtContent);
-		})
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Your Thrift file has been formatted');
 	});
 
 	context.subscriptions.push(disposable);
@@ -47,3 +37,26 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
+
+export function formatThrift(content :string): [string, boolean] {
+	let data: ThriftData;
+	try {
+		data = ThriftData.from_string(content);
+	} catch (error) {
+		vscode.window.showInformationMessage('Can not parse Your thrift file');
+		return ["", false];
+	}
+	const fmt = new ThriftFormatter(data);
+	fmt.option(true, true); // TODO: read from config
+
+	const fmtContent = fmt.format();
+	if (fmtContent === "") {
+		vscode.window.showInformationMessage('Thrift Formatter something wrong');
+		return ["", false];
+	}
+	if (fmtContent === content) {
+		vscode.window.showInformationMessage('Thrift Formatter nothing changed');
+		return ["", false];
+	}
+	return [fmtContent, true];
+}
