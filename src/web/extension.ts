@@ -20,10 +20,11 @@ export function activate(context: vscode.ExtensionContext) {
 		if (!vscode.window.activeTextEditor) {
 			return;
 		}
+
 		const { document } = vscode.window.activeTextEditor;
 		const content = document.getText();
 		if (content === "") {
-			vscode.window.showInformationMessage('thrift is empty');
+			vscode.window.showInformationMessage('No content to format.');
 			return;
 		}
 
