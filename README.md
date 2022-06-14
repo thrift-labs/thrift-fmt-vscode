@@ -16,6 +16,8 @@ use https://github.com/thrift-labs/thrift-fmt-ts
 
 ## Extension Settings
 
+// TODO
+
 1. option indent / patch / comment
 Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
@@ -28,9 +30,9 @@ This extension contributes the following settings:
 
 ## Release Notes
 
-### 1.0.2-a0
+### 1.0.2
 
-fix the miss `exception` bug
+fix bugs and enable patch
 
 ### 1.0.1
 
