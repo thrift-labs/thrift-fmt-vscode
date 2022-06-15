@@ -10,18 +10,11 @@
             ],
             "name": "Launch Extension",
             "outFiles": [
-                "${workspaceFolder}/out/**/*.js"
+                "${workspaceFolder}/dist/web/**/*.js"
             ],
-            "preLaunchTask": "npm",
+            "preLaunchTask": "npm: compile-web",
             "request": "launch",
             "type": "extensionHost"
-        },
-        {
-            "type": "pwa-chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
         }
     ]
 }
