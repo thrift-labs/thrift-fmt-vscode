@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.1.0] fix the runtime bug - 2022-06-15
+### Added
+- Fix the `format_node` bug (constructor.name changed on js compile)
+
 ## [1.0.2] enable pathc && fix miss fields - 2022-06-13
 
 ### Added
