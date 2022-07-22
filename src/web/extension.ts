@@ -24,8 +24,8 @@ export function activate(context: vscode.ExtensionContext) {
 		const config = vscode.workspace.getConfiguration('thirftFormatter');
 		const patch = config.get<boolean>('patch');
 		const indent = config.get<number>('indent');
-		vscode.window.showInformationMessage(`thrift-formatter patch: ${patch}`);
-		vscode.window.showInformationMessage(`thrift-formatter indent: ${indent}`);
+		// vscode.window.showInformationMessage(`thrift-formatter patch: ${patch}`);
+		// vscode.window.showInformationMessage(`thrift-formatter indent: ${indent}`);
 
 		const { document } = vscode.window.activeTextEditor;
 		const content = document.getText();
