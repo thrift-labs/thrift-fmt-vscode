@@ -21,6 +21,12 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
+		const config = vscode.workspace.getConfiguration('thirftFormatter');
+		const patch = config.get<Boolean>('patch');
+		const indent = config.get<Number>('indent');
+		vscode.window.showInformationMessage(`thrift-formatter patch: ${patch}`);
+		vscode.window.showInformationMessage(`thrift-formatter indent: ${indent}`);
+
 		const { document } = vscode.window.activeTextEditor;
 		const content = document.getText();
 		if (content === "") {
@@ -56,17 +62,19 @@ export function formatThrift(content :string): [string, boolean] {
 		vscode.window.showInformationMessage('Thrift Formatter parse failed ' + error);
 		return ["", false];
 	}
+
 	const fomatter = new ThriftFormatter(data);
 	fomatter.option(true, true); // TODO: read from config
 
 	const newContent = fomatter.format();
-	if (newContent === "") {
-		vscode.window.showInformationMessage('Thrift Formatter something wrong');
-		return ["", false];
-	}
 	if (newContent === content) {
 		vscode.window.showInformationMessage('Thrift File has been formatted');
 		return ["", false];
 	}
+	if (newContent === "") {
+		vscode.window.showInformationMessage('Thrift Formatter something wrong');
+		return ["", false];
+	}
+
 	return [newContent, true];
 }

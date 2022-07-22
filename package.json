@@ -23,9 +23,35 @@
 				"command": "thirft-formatter.formatThriftFile",
 				"title": "Format Thrift"
 			}
-		]
+		],
+		"keybindings": [
+			{
+			  "command": "thirft-formatter.formatThriftFile",
+			  "key": "ctrl+l",
+			  "mac": "cmd+l"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Thirft Formatter ",
+			"properties": {
+			  "thirftFormatter.patch": {
+				"type": "boolean",
+				"scope": "resource",
+				"default": true,
+				"description": "auto patch the miss field(like required/comma)"
+			  },
+			  "thirftFormatter.indent": {
+				"type": "number",
+				"scope": "resource",
+				"default": 4,
+				"description": "indent for field or method"
+			  }
+			}
+		}
 	},
 	"repository": "https://github.com/thrift-labs/thrift-fmt-vscode",
+	"icon": "icons/thrift-fmt.png",
 	"publisher": "alingse",
 	"scripts": {
 		"test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/suite/index.js",

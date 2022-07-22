@@ -46,6 +46,10 @@ const webExtensionConfig = {
 			use: [{
 				loader: 'ts-loader'
 			}]
+		},
+		{
+			test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
+			loader: "file"
 		}]
 	},
 	plugins: [
