@@ -22,8 +22,8 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		const config = vscode.workspace.getConfiguration('thirftFormatter');
-		const patch = config.get<Boolean>('patch');
-		const indent = config.get<Number>('indent');
+		const patch = config.get<boolean>('patch');
+		const indent = config.get<number>('indent');
 		vscode.window.showInformationMessage(`thrift-formatter patch: ${patch}`);
 		vscode.window.showInformationMessage(`thrift-formatter indent: ${indent}`);
 
@@ -34,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		const [fmtContent, needUpdate] = formatThrift(content);
+		const [fmtContent, needUpdate] = formatThrift(content, patch || false, indent);
 		if (needUpdate) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				editBuilder.replace(
@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
 // this method is called when your extension is deactivated
 export function deactivate() {}
 
-export function formatThrift(content :string): [string, boolean] {
+export function formatThrift(content :string, patch :boolean, indent: number|undefined): [string, boolean] {
 	if (content === "") {
 		return ["", false];
 	}
@@ -64,7 +64,7 @@ export function formatThrift(content :string): [string, boolean] {
 	}
 
 	const fomatter = new ThriftFormatter(data);
-	fomatter.option(true, true); // TODO: read from config
+	fomatter.option(true, patch, indent);
 
 	const newContent = fomatter.format();
 	if (newContent === content) {
