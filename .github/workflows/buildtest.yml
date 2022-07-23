@@ -28,9 +28,10 @@ jobs:
         npm run compile-web
         npm run package-web
 
-    - name: Setup Chrome
-      uses: browser-actions/setup-chrome@4fa655aad48f56911cad16db9252399a9e592848
-      #uses: browser-actions/setup-chrome@v0.0.0
+    - name: setup-chromedriver
+      # You may pin to the exact commit or the version.
+      # uses: nanasess/setup-chromedriver@cc57e407ab3004f399e5452ae6ee2eeeeaaa8da4
+      uses: nanasess/setup-chromedriver@v1.0.7
 
     - name: Test
       run: |
