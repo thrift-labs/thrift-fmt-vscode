@@ -33,7 +33,11 @@ jobs:
       # uses: nanasess/setup-chromedriver@cc57e407ab3004f399e5452ae6ee2eeeeaaa8da4
       uses: nanasess/setup-chromedriver@v1.0.7
 
-    - name: Test
+    - name: test
       run: |
+        export DISPLAY=:99
+        chromedriver --url-base=/wd/hub &
+        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+
         npm run pretest
         npm run test
