@@ -16,24 +16,18 @@ use https://github.com/thrift-labs/thrift-fmt-ts
 
 ## Extension Settings
 
-// TODO
+1. `thirftFormatter.patch` boolean, default `true`
 
-1. option indent / patch / comment
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+if `true` will patch the miss `required` / `,` for field or function.
 
-This extension contributes the following settings:
+2. `thirftFormatter.indent` number, default `4`
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+the space indent for field in struct or enum and function in service.
 
 ## Known Issues
 
+see [#issues](https://github.com/thrift-labs/thrift-fmt-vscode/issues)
+
 ## Release Notes
 
-### 1.0.2
-
-fix bugs and enable patch
-
-### 1.0.1
-
-the first MVP
+see [CHANGELOG.md](https://github.com/thrift-labs/thrift-fmt-vscode/blob/main/CHANGELOG.md) and [vscode Page](https://marketplace.visualstudio.com/items?itemName=alingse.thirft-formatter)
