@@ -30,13 +30,6 @@
 				"title": "Format Thrift"
 			}
 		],
-		"keybindings": [
-			{
-			  "command": "thirft-formatter.formatThriftFile",
-			  "key": "ctrl+l",
-			  "mac": "cmd+l"
-			}
-		],
 		"configuration": {
 			"type": "object",
 			"title": "Thirft Formatter ",
