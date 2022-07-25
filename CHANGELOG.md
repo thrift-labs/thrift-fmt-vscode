@@ -8,7 +8,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [1.2.1] support vscode language formatter - 2022-07-25
 ### Added
-- upport vscode language formatter
+- support vscode language formatter
 
 ## [1.2.0] add user config - 2022-07-23
 ### Added
