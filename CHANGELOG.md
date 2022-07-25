@@ -2,9 +2,11 @@
 
 All notable changes to the "thirft-formatter" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
 ## [Unreleased]
+
+## [1.2.2] clean docs - 2022-07-25
+### Add
+- clean docs and code
 
 ## [1.2.1] support vscode language formatter - 2022-07-25
 ### Added
