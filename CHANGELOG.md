@@ -6,6 +6,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.2.1] support vscode language formatter - 2022-07-25
+### Added
+- upport vscode language formatter
+
+## [1.2.0] add user config - 2022-07-23
+### Added
+- support user config `patch` and `indent`
+
 ## [1.1.0] fix the runtime bug - 2022-06-15
 ### Added
 - Fix the `format_node` bug (constructor.name changed on js compile)
