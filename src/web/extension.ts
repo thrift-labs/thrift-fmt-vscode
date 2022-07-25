@@ -24,8 +24,6 @@ export function activate(context: vscode.ExtensionContext) {
 		const config = vscode.workspace.getConfiguration('thirftFormatter');
 		const patch = config.get<boolean>('patch');
 		const indent = config.get<number>('indent');
-		// vscode.window.showInformationMessage(`thrift-formatter patch: ${patch}`);
-		// vscode.window.showInformationMessage(`thrift-formatter indent: ${indent}`);
 
 		const { document } = vscode.window.activeTextEditor;
 		const content = document.getText();
@@ -41,6 +39,31 @@ export function activate(context: vscode.ExtensionContext) {
 					new vscode.Range(0, 0, document.lineCount, 0), fmtContent);
 			})
 			vscode.window.showInformationMessage('Thrift file has been formatted');
+		}
+	});
+
+	// 👍 formatter implemented using API
+	vscode.languages.registerDocumentFormattingEditProvider('thrift', {
+		provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+			const config = vscode.workspace.getConfiguration('thirftFormatter');
+			const patch = config.get<boolean>('patch');
+			const indent = config.get<number>('indent');
+
+			const content = document.getText();
+			if (content === "") {
+				vscode.window.showInformationMessage('No content to format.');
+				return [];
+			}
+
+			const [fmtContent, needUpdate] = formatThrift(content, patch || false, indent);
+
+			if (needUpdate) {
+				return [
+					vscode.TextEdit.replace(
+						new vscode.Range(0, 0, document.lineCount, 0), fmtContent)
+				];
+			}
+		return [];
 		}
 	});
 
