@@ -4,8 +4,12 @@ All notable changes to the "thirft-formatter" extension will be documented in th
 
 ## [Unreleased]
 
+## [1.2.3] clean docs - 2022-07-28
+### Added
+- fix parse thrift error [issues #7](https://github.com/thrift-labs/thrift-fmt-vscode/issues/7) and [thrift-labs/thrift-parser#5](https://github.com/thrift-labs/thrift-parser/pull/5)
+
 ## [1.2.2] clean docs - 2022-07-25
-### Add
+### Added
 - clean docs and code
 
 ## [1.2.1] support vscode language formatter - 2022-07-25
