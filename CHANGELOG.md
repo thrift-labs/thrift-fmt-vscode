@@ -4,7 +4,7 @@ All notable changes to the "thirft-formatter" extension will be documented in th
 
 ## [Unreleased]
 
-## [1.2.3] clean docs - 2022-07-28
+## [1.2.3] clean docs - 2022-07-30
 ### Added
 - fix parse thrift error [issues #7](https://github.com/thrift-labs/thrift-fmt-vscode/issues/7) and [thrift-labs/thrift-parser#5](https://github.com/thrift-labs/thrift-parser/pull/5)
 
