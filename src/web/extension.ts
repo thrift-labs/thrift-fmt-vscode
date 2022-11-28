@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { ThriftData } from 'thrift-parser-ts';
-import { ThriftFormatter } from 'thrift-fmt-ts';
+import { ThriftFormatter, Option, newOption } from 'thrift-fmt-ts';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -14,8 +14,11 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		const config = vscode.workspace.getConfiguration('thirftFormatter');
-		const patch = config.get<boolean>('patch');
-		const indent = config.get<number>('indent');
+		const option = newOption({
+			patch: config.get<boolean>('patch'),
+			indent: config.get<number>('indent'),
+			assignAlign: config.get<boolean>('assignAlign'),
+		})
 
 		const { document } = vscode.window.activeTextEditor;
 		const content = document.getText();
@@ -24,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		const [fmtContent, needUpdate] = formatThrift(content, patch || false, indent);
+		const [fmtContent, needUpdate] = formatThrift(content, option);
 		if (needUpdate) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				editBuilder.replace(
@@ -38,8 +41,11 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.languages.registerDocumentFormattingEditProvider('thrift', {
 		provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
 			const config = vscode.workspace.getConfiguration('thirftFormatter');
-			const patch = config.get<boolean>('patch');
-			const indent = config.get<number>('indent');
+			const option = newOption({
+				patch: config.get<boolean>('patch'),
+				indent: config.get<number>('indent'),
+				assignAlign: config.get<boolean>('assignAlign'),
+			})
 
 			const content = document.getText();
 			if (content === "") {
@@ -47,7 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
 				return [];
 			}
 
-			const [fmtContent, needUpdate] = formatThrift(content, patch || false, indent);
+			const [fmtContent, needUpdate] = formatThrift(content, option);
 
 			if (needUpdate) {
 				return [
@@ -64,7 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {}
 
-export function formatThrift(content :string, patch :boolean, indent: number|undefined): [string, boolean] {
+export function formatThrift(content :string, option: Option): [string, boolean] {
 	if (content === "") {
 		return ["", false];
 	}
@@ -78,7 +84,7 @@ export function formatThrift(content :string, patch :boolean, indent: number|und
 	}
 
 	const fomatter = new ThriftFormatter(data);
-	fomatter.option(true, patch, indent);
+	fomatter.option(option);
 
 	const newContent = fomatter.format();
 	if (newContent === content) {
