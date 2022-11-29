@@ -4,6 +4,10 @@ All notable changes to the "thirft-formatter" extension will be documented in th
 
 ## [Unreleased]
 
+## [1.2.4] Add Feature: Support Align the Field's Assign Part in Struct/Enum/Union ... - 2022-11-29
+### Added
+- Support Align the Field's Assign Part in Struct/Enum/Union [thrift-labs/thrift-parser#5](https://github.com/thrift-labs/thrift-parser/pull/5)
+
 ## [1.2.3] clean docs - 2022-07-30
 ### Added
 - fix parse thrift error [issues #7](https://github.com/thrift-labs/thrift-fmt-vscode/issues/7) and [thrift-labs/thrift-parser#5](https://github.com/thrift-labs/thrift-parser/pull/5)

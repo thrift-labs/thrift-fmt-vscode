@@ -9,8 +9,9 @@ use https://github.com/thrift-labs/thrift-fmt-ts
 ## Features
 
 1. keeping the comments
-2. align the tail comment of struct / enum
-3. patch the miss field ( list_sep or required)
+2. align the tail comment of struct/enum
+3. align the field's assgin part in struct/enum/union/exception
+4. patch the miss field (list_sep or required)
 
 ## Requirements
 
@@ -23,6 +24,10 @@ if `true` will patch the miss `required` / `,` for field or function.
 2. `thirftFormatter.indent` number, default `4`
 
 the space indent for field in struct or enum and function in service.
+
+3. `thirftFormatter.assignAlign` boolean, default `true`
+
+align the field's assgin part in struct/enum/union/exception
 
 ## Known Issues
 
