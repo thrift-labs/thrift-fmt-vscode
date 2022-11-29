@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { ThriftData } from 'thrift-parser-ts';
-import { ThriftFormatter } from 'thrift-fmt-ts';
+import { ThriftFormatter, Option, newOption } from 'thrift-fmt-ts';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -13,19 +13,9 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		const config = vscode.workspace.getConfiguration('thirftFormatter');
-		const patch = config.get<boolean>('patch');
-		const indent = config.get<number>('indent');
-
 		const { document } = vscode.window.activeTextEditor;
-		const content = document.getText();
-		if (content === "") {
-			vscode.window.showInformationMessage('No content to format.');
-			return;
-		}
-
-		const [fmtContent, needUpdate] = formatThrift(content, patch || false, indent);
-		if (needUpdate) {
+		const [fmtContent, ] = editDocument(document);
+		if (fmtContent.length > 0) {
 			vscode.window.activeTextEditor.edit(editBuilder => {
 				editBuilder.replace(
 					new vscode.Range(0, 0, document.lineCount, 0), fmtContent);
@@ -37,25 +27,11 @@ export function activate(context: vscode.ExtensionContext) {
 	// register thrift language formatter
 	vscode.languages.registerDocumentFormattingEditProvider('thrift', {
 		provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
-			const config = vscode.workspace.getConfiguration('thirftFormatter');
-			const patch = config.get<boolean>('patch');
-			const indent = config.get<number>('indent');
-
-			const content = document.getText();
-			if (content === "") {
-				vscode.window.showInformationMessage('No content to format.');
+			const [, textEdit] = editDocument(document);
+			if (textEdit === undefined) {
 				return [];
 			}
-
-			const [fmtContent, needUpdate] = formatThrift(content, patch || false, indent);
-
-			if (needUpdate) {
-				return [
-					vscode.TextEdit.replace(
-						new vscode.Range(0, 0, document.lineCount, 0), fmtContent)
-				];
-			}
-		return [];
+			return [textEdit];
 		}
 	});
 
@@ -64,7 +40,32 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {}
 
-export function formatThrift(content :string, patch :boolean, indent: number|undefined): [string, boolean] {
+export function editDocument(document: vscode.TextDocument): [string, vscode.TextEdit|undefined] {
+	const config = vscode.workspace.getConfiguration('thirftFormatter');
+	const option = newOption({
+		patch: config.get<boolean>('patch'),
+		indent: config.get<number>('indent'),
+		assignAlign: config.get<boolean>('assignAlign'),
+	})
+
+	const content = document.getText();
+	if (content === "") {
+		vscode.window.showInformationMessage('No content to format.');
+		return ["", undefined];
+	}
+
+	const [fmtContent, needUpdate] = formatThrift(content, option);
+	if (needUpdate) {
+		return [
+			fmtContent,
+			vscode.TextEdit.replace(
+				new vscode.Range(0, 0, document.lineCount, 0), fmtContent)
+		];
+	}
+	return [fmtContent, undefined];
+}
+
+export function formatThrift(content :string, option: Option): [string, boolean] {
 	if (content === "") {
 		return ["", false];
 	}
@@ -78,7 +79,7 @@ export function formatThrift(content :string, patch :boolean, indent: number|und
 	}
 
 	const fomatter = new ThriftFormatter(data);
-	fomatter.option(true, patch, indent);
+	fomatter.option(option);
 
 	const newContent = fomatter.format();
 	if (newContent === content) {
