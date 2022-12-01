@@ -19,11 +19,19 @@
 	],
 	"browser": "./dist/web/extension.js",
 	"contributes": {
-		"languages": [{
-			"id": "thrift",
-			"extensions": [ ".thrift", ".Thrift" ],
-			"aliases": [ "Thrift", "thrift" ]
-		}],
+		"languages": [
+			{
+				"id": "thrift",
+				"extensions": [
+					".thrift",
+					".Thrift"
+				],
+				"aliases": [
+					"Thrift",
+					"thrift"
+				]
+			}
+		],
 		"commands": [
 			{
 				"command": "thirft-formatter.formatThriftFile",
@@ -34,24 +42,24 @@
 			"type": "object",
 			"title": "Thirft Formatter ",
 			"properties": {
-			  "thirftFormatter.patch": {
-				"type": "boolean",
-				"scope": "resource",
-				"default": true,
-				"description": "auto patch the miss field(like required/comma)"
-			  },
-			  "thirftFormatter.indent": {
-				"type": "number",
-				"scope": "resource",
-				"default": 4,
-				"description": "indent for field or method"
-			  },
-			  "thirftFormatter.assignAlign": {
-				"type": "boolean",
-				"scope": "resource",
-				"default": true,
-				"description": "align by field's assgin in struct/enum/union/exception"
-			  }
+				"thirftFormatter.patch": {
+					"type": "boolean",
+					"scope": "resource",
+					"default": true,
+					"description": "auto patch the miss field(like required/comma)"
+				},
+				"thirftFormatter.indent": {
+					"type": "number",
+					"scope": "resource",
+					"default": 4,
+					"description": "indent for field or method"
+				},
+				"thirftFormatter.assignAlign": {
+					"type": "boolean",
+					"scope": "resource",
+					"default": true,
+					"description": "align by field's assgin in struct/enum/union/exception"
+				}
 			}
 		}
 	},
@@ -82,6 +90,6 @@
 		"webpack-cli": "^4.9.2"
 	},
 	"dependencies": {
-		"thrift-fmt-ts": "^1.1.2"
+		"thrift-fmt-ts": "^1.2.0"
 	}
 }
