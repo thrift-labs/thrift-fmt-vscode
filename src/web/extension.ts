@@ -72,7 +72,7 @@ export function formatThrift(content :string, option: Option): [string, boolean]
 
 	let data: ThriftData;
 	try {
-		data = ThriftData.from_string(content);
+		data = ThriftData.fromString(content);
 	} catch (error) {
 		vscode.window.showInformationMessage('Thrift Formatter parse failed ' + error);
 		return ["", false];
