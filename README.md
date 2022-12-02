@@ -17,15 +17,15 @@ use https://github.com/thrift-labs/thrift-fmt-ts
 
 ## Extension Settings
 
-1. `thirftFormatter.patch` boolean, default `true`
+1. `thriftFormatter.patch` boolean, default `true`
 
 if `true` will patch the miss `required` / `,` for field or function.
 
-2. `thirftFormatter.indent` number, default `4`
+2. `thriftFormatter.indent` number, default `4`
 
 the space indent for field in struct or enum and function in service.
 
-3. `thirftFormatter.assignAlign` boolean, default `true`
+3. `thriftFormatter.assignAlign` boolean, default `true`
 
 align the field's assgin part in struct/enum/union/exception
 
