@@ -1,6 +1,6 @@
 {
 	"name": "thrift-formatter-vs",
-	"displayName": "Thrift Formatter ",
+	"displayName": "Thrift Formatter",
 	"description": "Thrift file formatter, keeping and align comment",
 	"version": "1.3.0",
 	"engines": {
