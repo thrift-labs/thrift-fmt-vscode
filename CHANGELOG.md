@@ -4,6 +4,10 @@ All notable changes to the "thirft-formatter" extension will be documented in th
 
 ## [Unreleased]
 
+## [1.3.0] rename name - 2022-12-02
+### Fixed
+- fix typo thirft --> thrift
+
 ## [1.2.5] clean code - 2022-12-01
 ### Added
 - upgrade thrift-fmt-ts code

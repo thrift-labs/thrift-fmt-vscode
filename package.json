@@ -1,8 +1,8 @@
 {
 	"name": "thirft-formatter",
-	"displayName": "Thirft Formatter",
-	"description": "Thrift file formatter, keeping and align comment, patch the miss",
-	"version": "1.2.5",
+	"displayName": "Thrift Formatter",
+	"description": "Thrift file formatter, keeping and align comment",
+	"version": "1.3.0",
 	"engines": {
 		"vscode": "^1.67.0"
 	},
@@ -40,21 +40,21 @@
 		],
 		"configuration": {
 			"type": "object",
-			"title": "Thirft Formatter ",
+			"title": "Thrift Formatter",
 			"properties": {
-				"thirftFormatter.patch": {
+				"thriftFormatter.patch": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": true,
 					"description": "auto patch the miss field(like required/comma)"
 				},
-				"thirftFormatter.indent": {
+				"thriftFormatter.indent": {
 					"type": "number",
 					"scope": "resource",
 					"default": 4,
 					"description": "indent for field or method"
 				},
-				"thirftFormatter.assignAlign": {
+				"thriftFormatter.assignAlign": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": true,
