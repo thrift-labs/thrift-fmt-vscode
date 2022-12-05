@@ -1,8 +1,12 @@
 # Change Log
 
-All notable changes to the "thirft-formatter" extension will be documented in this file.
+All notable changes to the "thrift-formatter" extension will be documented in this file.
 
 ## [Unreleased]
+
+## [1.4.0] rename name - 2022-12-02
+### Fixed
+- fix typo thirft --> thrift in extension  setttings
 
 ## [1.3.0] rename name - 2022-12-02
 ### Fixed
