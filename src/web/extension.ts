@@ -5,7 +5,7 @@ import { ThriftFormatter, Option, newOption } from 'thrift-fmt-ts';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Congratulations, your extension "thirft-formatter" is now active in the web extension host!');
+	console.log('Congratulations, your extension "thrift-formatter" is now active in the web extension host!');
 
 	// register formatThriftfile command
 	let disposable = vscode.commands.registerCommand('thirft-formatter.formatThriftFile', async () => {
@@ -41,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {}
 
 export function editDocument(document: vscode.TextDocument): [string, vscode.TextEdit|undefined] {
-	const config = vscode.workspace.getConfiguration('thirftFormatter');
+	const config = vscode.workspace.getConfiguration('thriftFormatter');
 	const option = newOption({
 		patch: config.get<boolean>('patch'),
 		indent: config.get<number>('indent'),

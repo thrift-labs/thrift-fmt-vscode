@@ -1,10 +1,12 @@
-# thirft-formatter README
+# thrift-formatter README
 
 A Thrift file formatter extention
 
 use https://github.com/thrift-labs/thrift-fmt-ts
 
 (a typescript implement of https://github.com/thrift-labs/thrift-fmt )
+
+unfortunately, it was created with a typo name "thirft-formater"
 
 ## Features
 
