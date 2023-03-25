@@ -4,6 +4,12 @@ All notable changes to the "thrift-formatter" extension will be documented in th
 
 ## [Unreleased]
 
+## [1.5.0] upgrade thrift-fmt-ts, support align by field's each part - 2023-03-26
+### Feature
+- upgrade thrift-fmt-ts
+- support align by field's each part
+- change setting names
+
 ## [1.4.0] rename name - 2022-12-02
 ### Fixed
 - fix typo thirft --> thrift in extension  setttings
