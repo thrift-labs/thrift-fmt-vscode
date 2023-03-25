@@ -2,7 +2,7 @@
 	"name": "thirft-formatter",
 	"displayName": "Thrift Formatter",
 	"description": "Thrift file formatter, keeping and align comment",
-	"version": "1.4.0",
+	"version": "1.5.0-a0",
 	"engines": {
 		"vscode": "^1.67.0"
 	},
@@ -42,23 +42,35 @@
 			"type": "object",
 			"title": "Thrift Formatter",
 			"properties": {
-				"thriftFormatter.patch": {
+				"thriftFormatter.patchRequired": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": true,
-					"description": "auto patch the miss field(like required/comma)"
+					"description": "auto patch the miss 'required' of field\nsupport field in struct/union/exception "
+				},
+				"thriftFormatter.patchSeparator": {
+					"type": "boolean",
+					"scope": "resource",
+					"default": true,
+					"description": "auto patch the missed or useless separator\nseparator use comma ','"
 				},
 				"thriftFormatter.indent": {
 					"type": "number",
 					"scope": "resource",
 					"default": 4,
-					"description": "indent for field or method"
+					"description": "indent for field or function in struct enum union exception service"
 				},
-				"thriftFormatter.assignAlign": {
+				"thriftFormatter.alignByAssign": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": true,
-					"description": "align by field's assgin in struct/enum/union/exception"
+					"description": "align by field's assgin '=' \nsupport field in the struct enum union exception"
+				},
+				"thriftFormatter.alignByField": {
+					"type": "boolean",
+					"scope": "resource",
+					"default": false,
+					"description": "align by each part of field. if true, this will ingore 'Align By Assign' option\nsupport field in struct enum union exception"
 				}
 			}
 		}
@@ -90,6 +102,6 @@
 		"webpack-cli": "^4.9.2"
 	},
 	"dependencies": {
-		"thrift-fmt-ts": "^1.2.0"
+		"thrift-fmt-ts": "^1.3.0-a0"
 	}
 }
