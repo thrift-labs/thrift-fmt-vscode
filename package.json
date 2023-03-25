@@ -70,7 +70,7 @@
 					"type": "boolean",
 					"scope": "resource",
 					"default": false,
-					"description": "align by each part of field, field in struct/enum/union/exception"
+					"description": "align by each part of field, field in struct/enum/union/exception \nthis will ingore align By Assign setting"
 				}
 			}
 		}
