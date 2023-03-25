@@ -43,9 +43,11 @@ export function deactivate() {}
 export function editDocument(document: vscode.TextDocument): [string, vscode.TextEdit|undefined] {
 	const config = vscode.workspace.getConfiguration('thriftFormatter');
 	const option = newOption({
-		patch: config.get<boolean>('patch'),
+		patchRequired: config.get<boolean>('patch'),           // 兼容
+		patchSeparator: config.get<boolean>('patchSeparator'),
 		indent: config.get<number>('indent'),
-		assignAlign: config.get<boolean>('assignAlign'),
+		alignByAssign: config.get<boolean>('assignAlign'),     // 兼容
+		alignByField: config.get<boolean>('alignByField'),
 	})
 
 	const content = document.getText();
