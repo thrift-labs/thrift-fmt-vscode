@@ -2,7 +2,7 @@
 	"name": "thirft-formatter",
 	"displayName": "Thrift Formatter",
 	"description": "Thrift file formatter, keeping and align comment",
-	"version": "1.5.0-a0",
+	"version": "1.5.0",
 	"engines": {
 		"vscode": "^1.67.0"
 	},
@@ -63,13 +63,13 @@
 				"thriftFormatter.alignByAssign": {
 					"type": "boolean",
 					"scope": "resource",
-					"default": true,
+					"default": false,
 					"description": "align by field's assgin '=' \nsupport field in the struct enum union exception"
 				},
 				"thriftFormatter.alignByField": {
 					"type": "boolean",
 					"scope": "resource",
-					"default": false,
+					"default": true,
 					"description": "align by each part of field. if true, this will ingore 'Align By Assign' option\nsupport field in struct enum union exception"
 				}
 			}
