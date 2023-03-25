@@ -42,7 +42,7 @@
 			"type": "object",
 			"title": "Thrift Formatter",
 			"properties": {
-				"thriftFormatter.patch": {
+				"thriftFormatter.patchRequired": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": true,
@@ -60,7 +60,7 @@
 					"default": 4,
 					"description": "indent for field or method"
 				},
-				"thriftFormatter.assignAlign": {
+				"thriftFormatter.alignByAssign": {
 					"type": "boolean",
 					"scope": "resource",
 					"default": true,
