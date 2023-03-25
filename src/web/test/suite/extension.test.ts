@@ -36,4 +36,27 @@ suite('Web Extension Test Suite', () => {
     SEVEN = 7, // seven
 }`);
 	});
+
+	test('test align by field', () => {
+		const rawContent = `
+		struct Person {
+			1: list<string> tags = ["A"],
+			2: optional list<string> opt_tags = ["1", "2"], // dogs
+			3: required list<string> req_tags = [],
+			4: string name = "hello"; // wtf
+			5: optional string opt_name,
+			16: required string req_name,
+		}`
+        const [content, ok] = fmtExt.formatThrift(rawContent, newOption({indent:4, alignByField:true}));
+		console.log(content);
+		assert.equal(content,
+`struct Person {
+    1:           list<string> tags     = [ "A" ]     ,
+    2:  optional list<string> opt_tags = [ "1", "2" ], // dogs
+    3:  required list<string> req_tags = [ ]         ,
+    4:           string       name     = "hello"     , // wtf
+    5:  optional string       opt_name               ,
+    16: required string       req_name               ,
+}`);
+	});
 });
