@@ -2,3 +2,4 @@ node_modules
 dist
 .vscode-test-web
 *.vsix
+package-lock.json

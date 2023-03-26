@@ -37,7 +37,7 @@ the space indent for field in struct or enum and function in service.
 
 if `true`, will align by field's assgin ('=') part, support field in struct or others.
 
-5. `thriftFormatter.assignAlign` boolean, default `true`
+5. `thriftFormatter.assignAlign` boolean, default `false`
 
 if `true`, will align by field's each part, support field in struct or others.
 
