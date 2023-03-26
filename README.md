@@ -1,4 +1,4 @@
-# thrift-formatter README
+# thrift-formatter
 
 A Thrift file formatter extention
 
